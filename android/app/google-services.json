@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "892805607601",
+    "project_id": "smart-bus-68f81",
+    "storage_bucket": "smart-bus-68f81.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:892805607601:android:08707bf199c2ba2982b290",
+        "android_client_info": {
+          "package_name": "com.example.smart_bus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "892805607601-glb4g3pts4fmk3efda7f7kvtcpkfgqt0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.smart_bus",
+            "certificate_hash": "f379619570a7764ee62275a8286a9dc7ecd4c53c"
+          }
+        },
+        {
+          "client_id": "892805607601-e4d5jb4091p8aoa6vrb4ctulav8msi9j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAhFN-UFMyPLMUYmBwLyzGv3QEjjThxTA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "892805607601-e4d5jb4091p8aoa6vrb4ctulav8msi9j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
