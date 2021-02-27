@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_bus/services/authservice.dart';
+import 'package:smart_bus/services/firestore.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -11,6 +12,7 @@ class _LoginPageState extends State<LoginPage> {
   final formKey = new GlobalKey<FormState>();
 
   String phoneNo, verificationId, smsCode;
+  String name;
 
   bool codeSent = false;
 
@@ -22,6 +24,17 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              Padding(
+                  padding: EdgeInsets.only(left: 25.0, right: 25.0),
+                  child: TextFormField(
+                    keyboardType: TextInputType.name,
+                    decoration: InputDecoration(hintText: 'Enter Your Name'),
+                    onChanged: (val) {
+                      setState(() {
+                        this.name = val;
+                      });
+                    },
+                  )),
               Padding(
                   padding: EdgeInsets.only(left: 25.0, right: 25.0),
                   child: TextFormField(
@@ -37,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
                   ? Padding(
                       padding: EdgeInsets.only(left: 25.0, right: 25.0),
                       child: TextFormField(
-                        keyboardType: TextInputType.phone,
+                        keyboardType: TextInputType.number,
                         decoration: InputDecoration(hintText: 'Enter OTP'),
                         onChanged: (val) {
                           setState(() {
@@ -52,6 +65,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: Center(
                           child: codeSent ? Text('Login') : Text('Verify')),
                       onPressed: () {
+                        userSetup(name, phoneNo);
                         codeSent
                             ? AuthService()
                                 .signInWithOTP(smsCode, verificationId)
