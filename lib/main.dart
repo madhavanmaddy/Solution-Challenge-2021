@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:smart_bus/screens/authentication/authenticate.dart';
-import 'package:smart_bus/screens/wrapper.dart';
+import 'package:smart_bus/services/authservice.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
@@ -11,12 +9,12 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Authenticate(),
+      home: AuthService().handleAuth(),
     );
   }
 }
