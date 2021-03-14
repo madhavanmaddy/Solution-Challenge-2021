@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_bus/screens/dashboard.dart';
+import 'package:smart_bus/screens/qrscanner.dart';
 import 'package:smart_bus/screens/loginpage.dart';
 
 class AuthService {
@@ -10,7 +10,7 @@ class AuthService {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (BuildContext context, snapshot) {
           if (snapshot.hasData) {
-            return DashboardPage();
+            return Qrscanner();
           } else {
             return LoginPage();
           }
