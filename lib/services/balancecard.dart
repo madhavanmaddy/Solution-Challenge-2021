@@ -6,7 +6,7 @@ class BalanceCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(top: 15),
-      height: 130.0,
+      height: 105.0,
       width: double.maxFinite,
       child: AnimatedContainer(
           duration: Duration(milliseconds: 500),
@@ -39,12 +39,12 @@ class BalanceCard extends StatelessWidget {
                             )),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 230, bottom: 15),
+                        padding: const EdgeInsets.only(left: 230, bottom: 0),
                         child: Text("₹${snapshot.data.docs[0]['Balance']}",
                             textAlign: TextAlign.end,
                             style: TextStyle(
                                 fontFamily: 'Montserrat',
-                                fontSize: 35.0,
+                                fontSize: 30.0,
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold)),
                       ),

@@ -64,7 +64,7 @@ class _StreamBuildState extends State<StreamBuild> {
                             )),
                       ),
                       Positioned(
-                          top: 170.0,
+                          top: 130.0,
                           left: 25.0,
                           right: 25.0,
                           child: Column(
@@ -83,9 +83,9 @@ class _StreamBuildState extends State<StreamBuild> {
                                         fontSize: 20.0,
                                         color: Colors.grey)),
                               ),
-                              SizedBox(height: 20.0),
+                              SizedBox(height: 10.0),
                               BalanceCard(),
-                              SizedBox(width: 20.0),
+                              SizedBox(width: 10.0),
                               Container(
                                   height: 40.0,
                                   child: ListView(
@@ -116,7 +116,7 @@ class _StreamBuildState extends State<StreamBuild> {
                                     );
                                   }),
                               SizedBox(
-                                height: 40,
+                                height: 20,
                               ),
                               ButtonCard(),
                             ],

@@ -27,7 +27,7 @@ class ButtonCard extends StatelessWidget {
               color: Colors.black,
               child: Container(
                 height: 60,
-                width: 138,
+                width: 100,
                 child: Center(
                   child: Text('TOP UP',
                       style: TextStyle(
