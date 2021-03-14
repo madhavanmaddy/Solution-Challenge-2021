@@ -11,6 +11,7 @@ class _QrscannerState extends State<Qrscanner> {
   String qrCodeResult;
   String source;
   String dest;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,7 +32,7 @@ class _QrscannerState extends State<Qrscanner> {
                     color: Colors.white)),
             centerTitle: true,
           ),
-          body: ListView(children: [
+          body: Stack(children: [
             Stack(
               children: [
                 Container(

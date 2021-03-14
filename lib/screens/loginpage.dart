@@ -218,15 +218,13 @@ class _LoginPageState extends State<LoginPage> {
                                           ])),
                                       child: Center(
                                           child: codeSent
-                                              ? {
-                                                  Text(
-                                                    "Login",
-                                                    style: TextStyle(
-                                                        color: Colors.white,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  ),
-                                                }
+                                              ? Text(
+                                                  "Login",
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                )
                                               : Text(
                                                   "Verify",
                                                   style: TextStyle(
