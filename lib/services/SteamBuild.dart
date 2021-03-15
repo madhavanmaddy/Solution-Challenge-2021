@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-//import 'package:smart_bus/services/firestore.dart';
+import 'package:smart_bus/services/firestore.dart';
 
 import 'Button.dart';
 import 'balancecard.dart';
@@ -192,9 +192,11 @@ class _StreamBuildState extends State<StreamBuild> {
 }
 
 getdetails() {
+  String searchphone = getphone();
+  print(searchphone + 'dashdiuahsiodhasoid');
   return FirebaseFirestore.instance
       .collection('Users')
-      //.where("Mobile", isEqualTo: getphone())
+      .where("Mobile", isEqualTo: searchphone)
       .snapshots();
 }
 
