@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_bus/services/firestore.dart';
+//import 'package:smart_bus/services/firestore.dart';
 
 import 'Button.dart';
 import 'balancecard.dart';
 
-var selectedCard = "";
+var selectedCard = "Plan 1";
 int cardamount = 0;
 
 class StreamBuild extends StatefulWidget {
