@@ -1,4 +1,4 @@
-package com.example.smart_bus
+package com.octobus.smartbus
 
 import io.flutter.embedding.android.FlutterActivity
 

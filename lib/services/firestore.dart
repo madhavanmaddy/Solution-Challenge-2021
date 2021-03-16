@@ -5,7 +5,8 @@ CollectionReference users = FirebaseFirestore.instance.collection('Users');
 Future<void> userSetup(String name, String mobile) async {
   var search = FirebaseFirestore.instance
       .collection('Users')
-      .where("Mobile", isEqualTo: mobile);
+      .where("Mobile", isEqualTo: mobile)
+      .get();
   if (search == null) users.add({'Name': name, 'Mobile': mobile, 'Balance': 0});
   return;
 }
@@ -18,4 +19,3 @@ String getphone() {
 
   return phone;
 }
-

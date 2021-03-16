@@ -14,11 +14,85 @@
       },
       "oauth_client": [
         {
+          "client_id": "892805607601-c5ecg2rr119ih035p7l72g529uq3a18j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.smart_bus",
+            "certificate_hash": "0f75620ff7999c8946b25b6bbb14d14f16709c9d"
+          }
+        },
+        {
           "client_id": "892805607601-glb4g3pts4fmk3efda7f7kvtcpkfgqt0.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.smart_bus",
             "certificate_hash": "f379619570a7764ee62275a8286a9dc7ecd4c53c"
+          }
+        },
+        {
+          "client_id": "892805607601-e4d5jb4091p8aoa6vrb4ctulav8msi9j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAhFN-UFMyPLMUYmBwLyzGv3QEjjThxTA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "892805607601-e4d5jb4091p8aoa6vrb4ctulav8msi9j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:892805607601:android:cf8ba008f70a6ba882b290",
+        "android_client_info": {
+          "package_name": "com.example.vs_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "892805607601-e4d5jb4091p8aoa6vrb4ctulav8msi9j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAhFN-UFMyPLMUYmBwLyzGv3QEjjThxTA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "892805607601-e4d5jb4091p8aoa6vrb4ctulav8msi9j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:892805607601:android:b4a912189eb4a5ee82b290",
+        "android_client_info": {
+          "package_name": "com.octobus.smartbus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "892805607601-g161b2ntud6mk8vrff68esbsk805drt1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.octobus.smartbus",
+            "certificate_hash": "dcaeb389c9630664360806e760b55176fe4383ef"
           }
         },
         {

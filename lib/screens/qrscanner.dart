@@ -1,6 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:smart_bus/services/Button.dart';
 import 'package:smart_bus/services/authservice.dart';
 import 'package:barcode_scan/barcode_scan.dart';
+import 'package:smart_bus/services/firestore.dart';
+
+int fare = 50;
 
 class Qrscanner extends StatefulWidget {
   @override
@@ -100,15 +106,15 @@ class _QrscannerState extends State<Qrscanner> {
                               ])),
                           child: Center(
                               child: Text(
-                            "Sign Out",
+                            "Finish Trip",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold),
                           )),
                         ),
                         onTap: () {
-                          AuthService().signOut();
-                        })
+                          completeTrip();
+                        }),
                   ]),
                 ),
               ],
@@ -170,7 +176,7 @@ class _QrscannerState extends State<Qrscanner> {
               ),
               const SizedBox(height: 20),
               Text(
-                'Fare : 50',
+                'Fare : $fare',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
