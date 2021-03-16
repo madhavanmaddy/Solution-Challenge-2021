@@ -6,7 +6,7 @@ import 'Button.dart';
 import 'balancecard.dart';
 
 var selectedCard = "Plan 1";
-int cardamount = 0;
+int cardamount = 50;
 
 class StreamBuild extends StatefulWidget {
   @override
@@ -24,7 +24,8 @@ class _StreamBuildState extends State<StreamBuild> {
                 child: CircularProgressIndicator(
               backgroundColor: Colors.white,
             ));
-          } else if (snapshot.data.size == 0) {
+          }
+          if (snapshot.data.size == 0) {
             return Center(
               child: Text("No data found",
                   style: TextStyle(
@@ -32,70 +33,73 @@ class _StreamBuildState extends State<StreamBuild> {
                       fontSize: 30.0,
                       color: Colors.white)),
             );
-          } else {
+          }
+          if (snapshot.hasData == true) {
             return ListView.builder(
                 physics: NeverScrollableScrollPhysics(),
                 itemCount: snapshot.data.size,
                 itemBuilder: (context, index) {
-                  return Column(children: [
-                    Stack(children: [
-                      Container(
-                          height: MediaQuery.of(context).size.height,
-                          width: MediaQuery.of(context).size.width,
-                          color: Colors.transparent),
-                      Positioned(
-                          top: 90.0,
-                          child: Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(45.0),
-                                    topRight: Radius.circular(45.0),
-                                  ),
-                                  color: Colors.white),
-                              height: MediaQuery.of(context).size.height,
-                              width: MediaQuery.of(context).size.width)),
-                      Center(
-                        child: Positioned(
-                            top: 30.0,
-                            child: CircleAvatar(
-                              backgroundImage:
-                                  AssetImage("assets/images/profile.jpg"),
-                              radius: 60,
-                            )),
+                  return Stack(children: [
+                    Container(
+                        height: MediaQuery.of(context).size.height,
+                        width: MediaQuery.of(context).size.width,
+                        color: Colors.transparent),
+                    Positioned(
+                        top: 90.0,
+                        child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(45.0),
+                                  topRight: Radius.circular(45.0),
+                                ),
+                                color: Colors.white),
+                            height: MediaQuery.of(context).size.height,
+                            width: MediaQuery.of(context).size.width)),
+                    Center(
+                      child: CircleAvatar(
+                        backgroundImage:
+                            AssetImage("assets/images/profile.jpg"),
+                        radius: 60,
                       ),
-                      Positioned(
-                          top: 130.0,
-                          left: 25.0,
-                          right: 25.0,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text(snapshot.data.docs[0]['Name'],
+                    ),
+                    Positioned(
+                        top: 130.0,
+                        left: 25.0,
+                        right: 25.0,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(snapshot.data.docs[0]['Name'],
+                                style: TextStyle(
+                                    fontFamily: 'Montserrat',
+                                    fontSize: 22.0,
+                                    fontWeight: FontWeight.bold)),
+                            SizedBox(height: 20.0),
+                            Container(
+                              child: Text(snapshot.data.docs[0]['Mobile'],
                                   style: TextStyle(
                                       fontFamily: 'Montserrat',
-                                      fontSize: 22.0,
-                                      fontWeight: FontWeight.bold)),
-                              SizedBox(height: 20.0),
-                              Container(
-                                child: Text(snapshot.data.docs[0]['Mobile'],
-                                    style: TextStyle(
-                                        fontFamily: 'Montserrat',
-                                        fontSize: 20.0,
-                                        color: Colors.grey)),
-                              ),
-                              SizedBox(height: 10.0),
-                              BalanceCard(),
-                              SizedBox(width: 10.0),
-                              Container(
-                                  height: 40.0,
-                                  child: ListView(
-                                    scrollDirection: Axis.horizontal,
-                                  )),
-                              StreamBuilder(
-                                  stream: getplans(),
-                                  builder: (context, snapshot) {
+                                      fontSize: 20.0,
+                                      color: Colors.grey)),
+                            ),
+                            SizedBox(height: 10.0),
+                            BalanceCard(),
+                            SizedBox(width: 10.0),
+                            Container(
+                                height: 40.0,
+                                child: ListView(
+                                  scrollDirection: Axis.horizontal,
+                                )),
+                            StreamBuilder(
+                                stream: getplans(),
+                                builder: (context, snapshot) {
+                                  if (snapshot.data == null) {
+                                    return Center(
+                                      child: CircularProgressIndicator(),
+                                    );
+                                  } else {
                                     return Container(
-                                      height: 100.0,
+                                      height: 100,
                                       child: ListView.builder(
                                         scrollDirection: Axis.horizontal,
                                         itemCount: snapshot.data.size,
@@ -114,17 +118,18 @@ class _StreamBuildState extends State<StreamBuild> {
                                         },
                                       ),
                                     );
-                                  }),
-                              SizedBox(
-                                height: 20,
-                              ),
-                              ButtonCard(),
-                            ],
-                          ))
-                    ]),
+                                  }
+                                }),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            ButtonCard(),
+                          ],
+                        ))
                   ]);
                 });
           }
+          return Container();
         });
   }
 
@@ -193,7 +198,6 @@ class _StreamBuildState extends State<StreamBuild> {
 
 getdetails() {
   String searchphone = getphone();
-  print(searchphone + 'dashdiuahsiodhasoid');
   return FirebaseFirestore.instance
       .collection('Users')
       .where("Mobile", isEqualTo: searchphone)

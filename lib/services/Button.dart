@@ -1,6 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:smart_bus/screens/qrscanner.dart';
+import 'package:smart_bus/services/SteamBuild.dart';
 import 'package:smart_bus/services/firestore.dart';
+
+import 'authservice.dart';
 
 class ButtonCard extends StatelessWidget {
   @override
@@ -40,6 +45,7 @@ class ButtonCard extends StatelessWidget {
             RaisedButton(
               onPressed: () {
                 print("Sign Out");
+                AuthService().signOut();
               },
               splashColor: Color(0xFF7A9BEE),
               shape: RoundedRectangleBorder(
@@ -70,15 +76,38 @@ class ButtonCard extends StatelessWidget {
   }
 }
 
+var bal;
 topup() async {
   QuerySnapshot plan = await FirebaseFirestore.instance
       .collection("Users")
       .where("Mobile", isEqualTo: getphone())
       .get();
-  var bal = plan.docs[0]["Balance"];
+  bal = plan.docs[0]["Balance"];
   var id = plan.docs[0].id;
   await FirebaseFirestore.instance
       .collection("Users")
       .doc(id)
-      .update({"Balance": bal});
+      .update({"Balance": bal + cardamount});
+}
+
+completeTrip() async {
+  try {
+    QuerySnapshot plan = await FirebaseFirestore.instance
+        .collection("Users")
+        .where("Mobile", isEqualTo: getphone())
+        .get();
+    bal = plan.docs[0]["Balance"];
+    var id = plan.docs[0].id;
+    if (bal < fare) {
+      Fluttertoast.showToast(msg: "Not Enough Balance for the Trip");
+    } else {
+      await FirebaseFirestore.instance
+          .collection("Users")
+          .doc(id)
+          .update({"Balance": bal - fare});
+      Fluttertoast.showToast(msg: "Fare has been debited from your Wallet");
+    }
+  } catch (e) {
+    Fluttertoast.showToast(msg: 'Please Try Again');
+  }
 }
